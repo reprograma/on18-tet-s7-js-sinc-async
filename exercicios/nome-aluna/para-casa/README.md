@@ -1,10 +1,12 @@
 # Exercício de Casa 🏠 
 
-## Nome do Exercicio
+## Conversão em dólar
 
-- Explicação do exercício: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam leo nibh, tempus sed rhoncus et, ultrices vitae orci.
-Donec erat mauris, laoreet in tortor vel, eleifend suscipit nibh. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-Aliquam leo nibh, tempus sed rhoncus et, ultrices vitae orci. Donec erat mauris, laoreet in tortor vel, eleifend suscipit nibh. 
+Você quer saber quanto vai pagar em reais por um produto comprado nos EUA e para isso precisa consultar numa "API" de cotação para descobrir o valor do Dólar no momento da compra (você deve usar o valor do dólar comercial) e calcular o valor em Real, em seguida precisa consultar outra "API" que retorna o valor de dois juros que serão cobrados sob o preço em Real e retornar o valor final no console: `O preço final do seu produto é R$8016,24`
+
+dados:
+  `const precoEmDolar = 1270  //preço em dólar`
+  
 ---
 
 Terminou o exercício? Dá uma olhada nessa checklist e confere se tá tudo certinho, combinado?!
