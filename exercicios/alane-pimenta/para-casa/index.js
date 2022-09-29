@@ -20,7 +20,7 @@ function buscarJurosImportacao() {
       });
     }, 1000);
   });
-}
+};
 
 async function calcularValorEmReal(precoEmDolar) {
   try {
