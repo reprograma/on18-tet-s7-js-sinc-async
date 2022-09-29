@@ -1,3 +1,5 @@
+const precoEmDolarProduto = 1270;
+
 function buscarPrecoDolar() {
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -23,6 +25,23 @@ function buscarJurosImportacao() {
 }
 
 async function calcularValorEmReal(precoEmDolar) {
-  try {} 
-  catch (error) {}
+  try {
+    const dolar = await buscarPrecoDolar();
+    const juros = await buscarJurosImportacao();
+    let precoEmReal = (precoEmDolar*dolar.comercial);
+    console.log(dolar.turismo);
+    console.log(precoEmReal);
+
+    console.log(juros.message);
+
+    const valorFinal = (precoEmReal+(precoEmReal*(juros.juros1+juros.juros2)));
+
+    console.log(valorFinal);
+
+  }
+  catch (error) {
+    console.log("Nani?")
+  }
 }
+
+calcularValorEmReal(precoEmDolarProduto);
