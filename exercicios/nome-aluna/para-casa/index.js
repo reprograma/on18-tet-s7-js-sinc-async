@@ -1,5 +1,5 @@
-function buscarPrecoDolar() {
-  return new Promise((resolve) => {
+async function buscarPrecoDolar() {
+  return new Promise((resolve,reject) => {
     setTimeout(() => {
       resolve({
         comercial: "5.03",
@@ -9,8 +9,8 @@ function buscarPrecoDolar() {
   });
 }
 
-function buscarJurosImportacao() {
-  return new Promise((resolve) => {
+async function buscarJurosImportacao() {
+  return new Promise((resolve,reject) => {
     setTimeout(() => {
       resolve({
         juros1: 0.06,
@@ -22,7 +22,23 @@ function buscarJurosImportacao() {
   });
 }
 
-async function calcularValorEmReal(precoEmDolar) {
-  try {} 
-  catch (error) {}
+async function calcularValorEmReal(buscarJurosImportacao,buscarPrecoDolar) {
+  try {
+     let dollar= await buscarPrecoDolar()
+        console.log(dollar.comercial)
+       
+     }
+      
+     
+     
+  
+  catch (error) {
+    console.log(error)
+  }
 }
+
+
+calcularValorEmReal(buscarJurosImportacao,buscarPrecoDolar)
+
+//fazer se o try funcionar exibit a função buscaj e busca p
+//se não funcionar exibe uma mensagem de erro
