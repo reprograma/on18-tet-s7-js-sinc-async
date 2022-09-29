@@ -22,7 +22,21 @@ function buscarJurosImportacao() {
   });
 }
 
+// const precoEmDolar = 1270
+
 async function calcularValorEmReal(precoEmDolar) {
-  try {} 
-  catch (error) {}
+  try {
+const valorDoDolar = await buscarPrecoDolar()
+const valorJuros = await buscarJurosImportacao()
+let valorEmReal = precoEmDolar * valorDoDolar.comercial
+let valorFinal = valorEmReal + (valorEmReal * valorJuros.juros1) + (valorEmReal * valorJuros.juros2)
+
+console.log(`O preço final do seu produto é R$${valorFinal.toFixed(2).replace('.', ',')}.`)
+
+  } 
+  catch (error) {
+    console.log("Capturei um erro: ", error)
+  }
 }
+
+calcularValorEmReal(1270)
