@@ -23,6 +23,16 @@ function buscarJurosImportacao() {
 }
 
 async function calcularValorEmReal(precoEmDolar) {
-  try {} 
-  catch (error) {}
+  try {
+    const precoEmDolar = await buscarJurosImportacao()
+    const valorJuros = await buscarJurosImportacao()
+    let precoEmReal = precoEmDolar * valorDoDolar.comercial
+    let valorFinal = precoEmReall + (precoEmReal * valorJuros.juros1) + (precoEmReal * valorJuros.juros2)
+console.log(`O valor total do seu produto é R$${valorFinal.toFixed(2).replace('.', ',')}.`)
+  }
+ 
+  catch (error) {
+    console.log("Encontrei um erro: ", error)
+  }
 }
+calcularValorEmReal(precoEmDolar)
