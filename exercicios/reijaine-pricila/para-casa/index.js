@@ -25,7 +25,7 @@ function buscarJurosImportacao(valorReal) {
 function calcularJuros(comercial, juros1){
   return new Promise ((resolve)=> {
     setTimeout(()=>  {
-      return resolve ( comercial * juros1);
+      return resolve ( comercial * juros1)+ (comercial * juros2);
       
     }, 1000)
   })
@@ -33,20 +33,21 @@ function calcularJuros(comercial, juros1){
 
 
 const precoEmDolar = 1270
+
 async function calcularValorEmReal(precoEmDolar) {
+  try {} 
+  catch (error) {}
   try {
 const valorDoDolar = await buscarPrecoDolar()
-const valorJuros = await buscarJurosImportacao ()
-const valorReal = precoEmDolar * valorDoDolar.comercial
-const valorFinal = valorReal + (valorReal * valorJuros.juros2)
-precoEmReal = precoEmDolar * valorDoDolar.comercial
-precoFinal = precoEmReal + (valorJuros.juros1 * valorReal) + (valorJuros.juros2 * valorReal)
+const valorJuros = await buscarJurosImportacao()
+let valorEmReal = precoEmDolar * valorDoDolar.comercial
+let valorFinal = valorEmReal + (valorEmReal * valorJuros.juros1) + (valorEmReal * valorJuros.juros2)
 
-console.log(`O preço final do seu produto é R$${valorFinal.toFixed(2)}`)
+console.log(`O preço final do seu produto é R$${valorFinal.toFixed(2).replace('.', ',')}.`)
 
   } 
   catch (error) {
-    console.error("Capturei um erro: ", error)
+    console.log("Capturei um erro: ", error)
   }
 }
 
