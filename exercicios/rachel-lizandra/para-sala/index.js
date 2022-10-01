@@ -46,4 +46,4 @@ async function resolver(produto, numeroParcelas) {
   }
 }
 
-resolver("hormonios", 7)
+resolver("lace", 7)

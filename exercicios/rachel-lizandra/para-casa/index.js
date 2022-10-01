@@ -23,14 +23,31 @@ function buscarJurosImportacao() {
   });
 }
 
-async function calcularValorEmReal(precoEmDolar) {
+async function calcularValorEmReal(precoEmDolar, precodeTurismo) {
   try {
-    const dolar = await buscarPrecoDolar()
-    const juros = await buscarJurosImportacao()
-    let precoReal = precoEmDolar * dolar.comercial
-    let precoJuros1 = precoReal + (precoReal * juros.juros1)
-    let precoJuros2 = precoJuros1 + (precoJuros1 * juros.juros2)
-    console.log(`O preço final do seu produto é R$${precoJuros2.toFixed(2).replace('.', ',')}`)
+
+    // EXEMPLO 1 (mais simples)
+    // const dolar = await buscarPrecoDolar()
+    // const precoEmReal = precoEmDolar * dolar.comercial
+
+    // const juros = await buscarJurosImportacao()
+    // const precoFinal = precoEmReal + (precoEmReal * juros.juros1) + (precoEmReal * juros.juros2)
+
+    // console.log(`O preço final do seu produto é R$${precoFinal.toFixed(2).replace('.', ',')}`)
+
+    // EXEMPLO 2 (mais utilizado)
+    const dados = await Promise.all([
+      buscarPrecoDolar(),
+      buscarJurosImportacao()
+    ])
+
+    const { comercial } = dados[0]
+    const { juros1, juros2 } = dados[1]
+    const precoEmReal = precoEmDolar * comercial
+    const precoFinal = precoEmReal + (precoEmReal * juros1) + (precoEmReal * juros2)
+    
+    console.log(`O preço final do seu produto é R$${precoFinal.toFixed(2).replace('.', ',')}`)
+
   } 
   catch (error) {
     console.error("Capturei um erro", error)
