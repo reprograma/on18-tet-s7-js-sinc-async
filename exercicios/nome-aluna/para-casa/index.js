@@ -22,10 +22,16 @@ async function buscarJurosImportacao() {
   });
 }
 
-async function calcularValorEmReal(buscarJurosImportacao,buscarPrecoDolar) {
+async function calcularValorEmReal(buscarJurosImportacao,buscarPrecoDolar,real) {
   try {
      let dollar= await buscarPrecoDolar()
-        console.log(dollar.comercial)
+     let juros= await buscarJurosImportacao()
+
+    let precoReal=real* dollar.comercial
+
+    let precoFInal=precoReal+(precoReal*juros.juros1)+(precoReal*juros.juros2)
+    console.log(`O preço final é ${precoFInal.toFixed(2).replace('.',',')}`)
+
        
      }
       
@@ -38,7 +44,7 @@ async function calcularValorEmReal(buscarJurosImportacao,buscarPrecoDolar) {
 }
 
 
-calcularValorEmReal(buscarJurosImportacao,buscarPrecoDolar)
+calcularValorEmReal(buscarJurosImportacao,buscarPrecoDolar,10.60)
 
 //fazer se o try funcionar exibit a função buscaj e busca p
 //se não funcionar exibe uma mensagem de erro
