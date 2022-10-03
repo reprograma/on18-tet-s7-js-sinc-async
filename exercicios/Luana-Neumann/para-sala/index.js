@@ -31,3 +31,4 @@ function calcularParcela(preco) {
     return preco * parcelasDesejadas
   }, 2000)
 }
+
