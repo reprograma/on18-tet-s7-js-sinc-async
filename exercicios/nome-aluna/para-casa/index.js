@@ -36,19 +36,25 @@ const precoEmDolar = 1270
 // })
 // .catch((error) => console.error("DEU ERRO: ", error))
 
+
 async function calcularValorEmReal(precoEmDolar) {
+ 
   try {
     const dolar = await buscarPrecoDolar()
-    const precoEmReal = precoEmDolar * dolar.comercial
-    const juros = await buscarJurosImportacao()
-    const precoFinal = precoEmReal + (precoEmReal * juros.juros1) + (precoEmReal * juros.juros2)
-    console.log(`O preço final do seu produto é R$${precoFinal.toFixed(2).replace('.', ',')}`)
-  } 
+    const jurosImportacao = await buscarJurosImportacao()
+    let precoReal = precoEmDolar * dolar.comercial;
+    let juros1 = precoReal + (precoReal * 0.13) 
+    let jurosTotal = juros1 + (juros1 * 0.07)
+    console.log(`O preço final do seu produto é R$${jurosTotal.toFixed(2).replace('.', ',')}`)
+
+  }
+
   catch (error) {
-    console.error("Capturado o erro: ", error)
+    console.error("Capturei um erro", error)
   }
 }
 
+calcularValorEmReal(1270)
 // async function calcularValorEmReal(precoEmDolar) {
 //   try {
 //     // console.time('DURACAO')
