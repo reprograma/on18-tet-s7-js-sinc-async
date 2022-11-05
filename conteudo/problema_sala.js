@@ -26,5 +26,5 @@ const pegarUsuaria = () => {
 // const pegarEndereco = () => {}
 // const pegarPedidos = () => {}
 
-const usuaria = pegarUsuaria() 
-console.log(usuaria.nome)
+const usuaria = pegarUsuaria() //pegarUsuaria() aqui está chamando a função
+console.log(usuaria.nome) //se qro acessar uma propriedade do objeto precio usar o ".", assim "como usuaria.nome"
