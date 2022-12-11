@@ -26,3 +26,17 @@ async function calcularValorEmReal(precoEmDolar) {
   try {} 
   catch (error) {}
 }
+
+
+const valorDolar = await buscarPrecoDolar()
+    const valorJuros = await buscarJurosImportacao()
+    valorComJuros = precoEmDolar+(precoEmDolar*(valorJuros.juros1+valorJuros.juros2))
+    valorSemJurosDolar = precoEmDolar*valorDolar.comercial
+    valorFinalProduto = valorComJuros*valorDolar.comercial
+    return console.log(
+      `  Valor em Dólar (sem juros): US$${valorSemJurosDolar.toFixed(2)}
+  Valor total com juros: US$${valorFinalProduto.toFixed(2)}`)
+  } 
+  catch (error) {console.log(error)}
+}
+calcularValorEmReal(10)
